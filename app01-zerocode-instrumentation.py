@@ -18,7 +18,7 @@ class Counter:
     def increment(self):
         value = randint(1, 5)
         self._count += value
-        logger.info(f'Counter incremented by {value}, current count: {self._count}')
+        logger.warning(f'Counter incremented by {value}, current count: {self._count}')
 
 
 cnt = Counter()
