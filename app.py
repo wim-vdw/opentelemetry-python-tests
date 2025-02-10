@@ -1,5 +1,4 @@
 from random import randint
-from tokenize import String
 
 from flask import Flask, request
 import logging
