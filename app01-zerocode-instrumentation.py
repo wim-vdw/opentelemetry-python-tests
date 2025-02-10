@@ -1,5 +1,5 @@
 from random import randint
-from flask import Flask, request
+from flask import Flask
 import logging
 
 app = Flask(__name__)
@@ -7,16 +7,25 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-@app.route('/rolldice')
-def roll_dice():
-    player = request.args.get('player', default=None, type=str)
-    result = str(roll())
-    if player:
-        logger.warning(f'{player} is rolling the dice: {result}')
-    else:
-        logger.warning(f'Anonymous player is rolling the dice: {result}')
-    return result
+class Counter:
+    def __init__(self):
+        self._count = 0
+
+    @property
+    def count(self) -> str:
+        return str(self._count)
+
+    def increment(self):
+        value = randint(1, 5)
+        self._count += value
+        logger.info(f'Counter incremented by {value}, current count: {self._count}')
 
 
-def roll():
-    return randint(1, 6)
+cnt = Counter()
+
+
+@app.route('/counter')
+def counter():
+    cnt.increment()
+
+    return cnt.count
