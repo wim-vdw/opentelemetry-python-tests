@@ -8,7 +8,7 @@ opentelemetry-instrument \
   --traces_exporter console \
   --metrics_exporter console \
   --logs_exporter console \
-  --service_name dice-server \
+  --service_name counter-server \
   flask --app app01-zerocode-instrumentation run -p 8080
 ```
 
