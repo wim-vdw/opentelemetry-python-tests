@@ -1,5 +1,4 @@
 from random import randint
-
 from flask import Flask, request
 import logging
 
@@ -8,14 +7,14 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-@app.route("/rolldice")
+@app.route('/rolldice')
 def roll_dice():
     player = request.args.get('player', default=None, type=str)
     result = str(roll())
     if player:
-        logger.warning("%s is rolling the dice: %s", player, result)
+        logger.warning(f'{player} is rolling the dice: {result}')
     else:
-        logger.warning("Anonymous player is rolling the dice: %s", result)
+        logger.warning(f'Anonymous player is rolling the dice: {result}')
     return result
 
 
