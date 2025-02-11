@@ -63,8 +63,20 @@ docker run --rm --name jaeger \
   -p 9411:9411 \
   jaegertracing/jaeger:2.3.0
 
-# Generate payload to data service
+# Call data service
 curl --request GET --include http://localhost:8083/data
 ```
+
+Result of the call to the data service:
+
+```json
+{
+  "car": "BMW",
+  "city": "Antwerp"
+}
+
+```
+
+Result of the propagation that moves data between services in the Jaeger UI:
 
 ![Automatic Context Propagation](automatic-context-propagation.png)
