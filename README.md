@@ -40,4 +40,11 @@ opentelemetry-instrument \
   --logs_exporter console,otlp \
   --service_name car-service \
   flask --app app04-car-service run --port 8082
+  
+opentelemetry-instrument \
+  --traces_exporter console,otlp \
+  --metrics_exporter console,otlp \
+  --logs_exporter console,otlp \
+  --service_name data-service \
+  flask --app app05-data-service run --port 8083
 ```
