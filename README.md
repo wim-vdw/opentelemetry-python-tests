@@ -27,6 +27,7 @@ docker run -p 4317:4317 \
 ```bash
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 
+# Start city service on port 8081
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
@@ -34,13 +35,15 @@ opentelemetry-instrument \
   --service_name city-service \
   flask --app app03-city-service run --port 8081
 
+# Start car service on port 8082
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
   --logs_exporter console \
   --service_name car-service \
   flask --app app04-car-service run --port 8082
-  
+ 
+# Start data service on port 8083 
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
@@ -48,6 +51,7 @@ opentelemetry-instrument \
   --service_name data-service \
   flask --app app05-data-service run --port 8083
 
+# Start Jaeger
 docker run --rm --name jaeger \
   -p 16686:16686 \
   -p 4317:4317 \
@@ -55,4 +59,7 @@ docker run --rm --name jaeger \
   -p 5778:5778 \
   -p 9411:9411 \
   jaegertracing/jaeger:2.3.0
+
+# Generate payload to data service
+curl --request GET --include http://localhost:8083/data
 ```
