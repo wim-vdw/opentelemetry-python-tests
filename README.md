@@ -24,6 +24,9 @@ docker run -p 4317:4317 \
 
 ## Automatic context propagation
 
+[OpenTelemetry - Concepts - Context propagation](https://opentelemetry.io/docs/concepts/context-propagation/)  
+[OpenTelemetry - Python Propagation](https://opentelemetry.io/docs/languages/python/propagation/)
+
 ```bash
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 
@@ -63,3 +66,5 @@ docker run --rm --name jaeger \
 # Generate payload to data service
 curl --request GET --include http://localhost:8083/data
 ```
+
+![Automatic Context Propagation](automatic-context-propagation.png)
