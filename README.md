@@ -77,6 +77,6 @@ Result of the call to the data service:
 
 ```
 
-Result of the propagation that moves data between services in the Jaeger UI:
+Result of the context propagation (that moves data between services) in the Jaeger UI:
 
 ![Automatic Context Propagation](automatic-context-propagation.png)
