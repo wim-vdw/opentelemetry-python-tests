@@ -74,7 +74,6 @@ Result of the call to the data service:
   "car": "BMW",
   "city": "Antwerp"
 }
-
 ```
 
 Result of the context propagation (that moves data between services) in the Jaeger UI:
